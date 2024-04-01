@@ -4,12 +4,14 @@ INSERT INTO MENUCATEGORIES VALUES("BEVERAGE"),("APPETIZER"),("DESSERT"),("ENTREE
 
 INSERT INTO MENU(ItemName, ItemDescription, Price, Category) values ("Double Hot Chocolate", "Indulgent Drink", 10.00, "Beverage");
 INSERT INTO MENU(ItemName, ItemDescription, Price, Category) values ("Iced Caramel Macchiato", "Caramel Laced Shot of Flavor", 11.00, "Beverage");
-INSERT INTO MENU(ItemName, ItemDescription, Price, Category) values ("Double Hot Chocolate", "Indulgent Drink", 10.00, "Beverage");
+
 
 /*
-BEVERAGES:
 
-"Double Hot Chocolate" 
+add this !!
+
+
+BEVERAGES:
 "Hot Jasmine Tea"
 "Iced Lavender Latte"
 "Iced Americano"
