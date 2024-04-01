@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Make an Order</title>
+</head>
+<body>
+    <h1>BrewBase</h1>
+    <h2>Place an Order</h2>
+
+    <!-- Update User Section -->
+    
+    <form action="make_order.php" method="POST">
+        <h3>Beverages<hr></h3>    
+        <p>
+            <table>        
+            <tr>
+                <th> Product </th> 
+                <th> Quantity </th>
+            </tr>
+          
+          <!-- Now, the table data entries -->
+          
+            <tr>
+                <td> Iced Caramel Macchiato </td>
+                <td> <input type = "number"  name = "macchiato" min = "0" max = "10" /> </td>
+            </tr>
+            <tr>
+                <td> Double Hot Chocolate </td>
+                <td> <input type = "number"  name = "hotchoco" min = "0" max = "10" /> </td>
+            </tr>
+            <tr>
+                <td> Hot Jasmine Tea </td>
+                <td> <input type = "number"  name = "jasminetea" min = "0" max = "10" /> </td>
+            </tr>
+            <tr>
+                <td> Iced Lavender Latte </td>
+                <td> <input type = "number"  name = "latte" min = "0" max = "10" /> </td>
+            </tr>
+            <tr>
+                <td> Iced Americano </td>
+                <td> <input type = "number"  name = "americano" min = "0" max = "10" /> </td>
+            </tr>
+          
+            </table>  
+        </p>
+        
+        <h3>Appetizers<hr></h3>
+        <table>        
+            <tr>
+                <th> Product </th> 
+                <th> Quantity </th>
+            </tr>
+          
+          <!-- Now, the table data entries -->
+          
+            <tr>
+                <td> Baby Corn Crisps </td>
+                <td> <input type = "number"  name = "babycorn" min = "0" max = "10" /> </td>
+            </tr>
+            <tr>
+                <td> Caesar Salad</td>
+                <td> <input type = "number"  name = "caesar" min = "0" max = "10" /> </td>
+            </tr>
+            <tr>
+                <td> Lox Bagel </td>
+                <td> <input type = "number"  name = "lox" min = "0" max = "10" /> </td>
+            </tr>
+            <tr>
+                <td> BBQ Tofu </td>
+                <td> <input type = "number"  name = "tofu" min = "0" max = "10" /> </td>
+            </tr>
+          
+            </table>  
+        </p>
+
+        <h3>Entrees<hr></h3>
+        <table>
+            <tr>
+                <th> Product </th> 
+                <th> Quantity </th>
+            </tr>
+        <tr>
+            <td> Miso Ramen </td>
+            <td> <input type = "number"  name = "miso" min = "0" max = "10" /> </td>
+        </tr>
+        <tr>
+            <td> Crispy Rice Rolls </td>
+            <td> <input type = "number"  name = "crispyrice" min = "0" max = "10" /> </td>
+        </tr>
+        <tr>
+            <td> Aglio e Olio Pasta </td>
+            <td> <input type = "number"  name = "algio" min = "0" max = "10" /> </td>
+        </tr>
+        </table>  
+    </p>
+
+        <h3>Dessert<hr></h3>
+        <table>
+            <tr>
+                <th> Product </th> 
+                <th> Quantity </th>
+            </tr>
+            <tr>
+                <td> Carrot Cake </td>
+                <td> <input type = "number"  name = "carrot" min = "0" max = "10" /> </td>
+            </tr> 
+            <tr>
+                <td> Black Forest Cake </td>
+                <td> <input type = "number"  name = "blackfor" min = "0" max = "10" /> </td>
+            </tr> 
+            <tr>
+                <td> Glazed Doughnut </td>
+                <td> <input type = "number"  name = "glazed" min = "0" max = "10" /> </td>
+            </tr> 
+            <tr>
+                <td> Mint Choco Ice Cream </td>
+                <td> <input type = "number"  name = "mintchoco" min = "0" max = "10" /> </td>
+            </tr>
+        </table>
+        <br><hr>
+
+
+        <h2>Customer Information</h2>
+        <h3>Customer Type<hr></h3>
+        <select name="customer_type" id="customer_type" onchange="showFields()">
+            <option value="existing">Existing Customer</option>
+            <option value="new">New Customer</option>
+        </select>
+        
+        <!-- Existing Customer Fields -->
+        <div id="existing_customer_fields">
+            <label>Customer ID:</label>
+            <input type="text" name="existing_custid" required>
+        </div>
+
+        <!-- New Customer Fields -->
+        <div id="new_customer_fields" style="display: none;">
+            <label>Customer ID:</label>
+            <input type="text" name="new_custid" required><br>
+            <label>Customer First Name:</label>
+            <input type="text" name="new_custfname" required><br>
+            <label>Customer Last Name:</label>
+            <input type="text" name="new_custlname" required><br>
+            <label>Customer Email:</label>
+            <input type="email" name="new_custemail" required><br>
+            <label>Customer Phone:</label>
+            <input type="text" name="new_custphone" minlength="10" maxlength="10" required><br>
+            <label>Customer DOB:</label>
+            <input type="date" name="new_custdob" min="1960-01-01" required><br>
+            <label>Customer Street:</label>
+            <input type="text" name="new_custstreet" required><br>
+            <label>Customer City:</label>
+            <input type="text" name="new_custcity" required><br>
+            <label>Customer State:</label>
+            <select name="new_custstate" required>
+                <option value="AL">AL</option>
+                <option value="AK">AK</option>
+                <option value="AR">AR</option>
+                <option value="AZ">AZ</option>
+                <option value="CA">CA</option>
+                <option value="CO">CO</option>
+                <option value="CT">CT</option>
+                <option value="DC">DC</option>
+                <option value="DE">DE</option>
+                <option value="FL">FL</option>
+                <option value="GA">GA</option>
+                <option value="HI">HI</option>
+                <option value="IA">IA</option>
+                <option value="ID">ID</option>
+                <option value="IL">IL</option>
+                <option value="IN">IN</option>
+                <option value="KS">KS</option>
+                <option value="KY">KY</option>
+                <option value="LA">LA</option>
+                <option value="MA">MA</option>
+                <option value="MD">MD</option>
+                <option value="ME">ME</option>
+                <option value="MI">MI</option>
+                <option value="MN">MN</option>
+                <option value="MO">MO</option>
+                <option value="MS">MS</option>
+                <option value="MT">MT</option>
+                <option value="NC">NC</option>
+                <option value="NE">NE</option>
+                <option value="NH">NH</option>
+                <option value="NJ">NJ</option>
+                <option value="NM">NM</option>
+                <option value="NV">NV</option>
+                <option value="NY">NY</option>
+                <option value="ND">ND</option>
+                <option value="OH">OH</option>
+                <option value="OK">OK</option>
+                <option value="OR">OR</option>
+                <option value="PA">PA</option>
+                <option value="RI">RI</option>
+                <option value="SC">SC</option>
+                <option value="SD">SD</option>
+                <option value="TN">TN</option>
+                <option value="TX">TX</option>
+                <option value="UT">UT</option>
+                <option value="VT">VT</option>
+                <option value="VA">VA</option>
+                <option value="WA">WA</option>
+                <option value="WI">WI</option>
+                <option value="WV">WV</option>
+                <option value="WY">WY</option>      
+            </select><br>
+            <label>Customer ZIP:</label>
+            <input type="text" name="new_custzip" required><br>
+        </div>
+
+
+        <br><br>
+        <button type="submit">Checkout</button>
+    </form>
+    
+    <br>
+    <script>
+        function showFields() {
+            var customerType = document.getElementById("customer_type").value;
+            if (customerType === "existing") {
+                document.getElementById("existing_customer_fields").style.display = "block";
+                document.getElementById("new_customer_fields").style.display = "none";
+            } else {
+                document.getElementById("existing_customer_fields").style.display = "none";
+                document.getElementById("new_customer_fields").style.display = "block";
+            }
+        }
+    </script>
+    
+
+</body>
+</html>
