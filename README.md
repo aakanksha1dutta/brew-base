@@ -35,6 +35,13 @@ A cafe database for workers, managers and customers alike.
 | Worker_State     | char(2)      | NO   |     | NULL    |       |
 | Worker_Zip       | char(5)      | NO   |     | NULL    |       |
 
+## MenuCategories
+
+| Field    | Type        | Null | Key | Default | Extra |
+| -------- | ----------- | ---- | --- | ------- | ----- |
+| Category | varchar(20) | NO   | PRI | NULL    |       |
+
+
 ## Menu
 | Field           | Type         | Null | Key | Default        | Extra          |
 | --------------- | ------------ | ---- | --- | -------------- | -------------- |
