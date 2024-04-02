@@ -35,5 +35,34 @@ A cafe database for workers, managers and customers alike.
 | Worker_State     | char(2)      | NO   |     | NULL    |       |
 | Worker_Zip       | char(5)      | NO   |     | NULL    |       |
 
-## 
+## Menu
+| Field           | Type         | Null | Key | Default        | Extra          |
+| --------------- | ------------ | ---- | --- | -------------- | -------------- |
+| ItemID          | int          | NO   | PRI | NULL           | auto_increment |
+| ItemName        | varchar(20)  | NO   | UNI | NULL           |                |
+| ItemDescription | varchar(235) | YES  |     | No Description |                |
+| Price           | decimal(4,2) | NO   |     | NULL           |                |
+| Category        | varchar(20)  | NO   | MUL | NULL           |                |
+
+## Order_Item
+
+
+| Field         | Type         | Null | Key | Default | Extra |
+| ------------- | ------------ | ---- | --- | ------- | ----- |
+| TransactionID | int          | NO   | PRI | NULL    |       |
+| ItemID        | int          | NO   | PRI | NULL    |       |
+| Quantity      | int          | YES  |     | NULL    |       |
+| Subtotal      | decimal(5,2) | YES  |     | NULL    |       |
+
+## Transaction
+
+| Field         | Type         | Null | Key | Default | Extra |
+| ------------- | ------------ | ---- | --- | ------- | ----- |
+| TransactionID | int          | NO   | PRI | NULL    |       |
+| Timestamp     | datetime     | NO   |     | NULL    |       |
+| TotalAmt      | decimal(5,2) | NO   |     | NULL    |       |
+| CustomerID    | varchar(20)  | NO   | MUL | NULL    |       |
+| WorkerSSN     | char(9)      | NO   | MUL | NULL    |       |
+
+
 
