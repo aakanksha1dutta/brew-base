@@ -12,7 +12,7 @@ INSERT INTO MENU(ItemID, ItemName, ItemDescription, Price, Category) values (10,
 INSERT INTO MENU(ItemID, ItemName, ItemDescription, Price, Category) values (11, "Caesar Salad", "Crisp Greens, Tangy Dressing", 10.00, "Appetizer");
 INSERT INTO MENU(ItemID, ItemName, ItemDescription, Price, Category) values (12, "Lox Bagel", "Buttery Bliss with Smoked Salmon", 10.00, "Appetizer");
 
-INSERT INTO MENU(ItemID, ItemName, ItemDescription, Price, Category) values (20, "BBQ Tofu", "Tangy, Grilled Vegan Goodness", 16.00, "Entree");
+INSERT INTO MENU(ItemID, ItemName, ItemDescription, Price, Category) values (13, "BBQ Tofu", "Tangy, Grilled Vegan Goodness", 16.00, "Entree");
 INSERT INTO MENU(ItemID, ItemName, ItemDescription, Price, Category) values (21, "Miso Ramen", "Umami Heaven in a Bowl", 18.00, "Entree");
 INSERT INTO MENU(ItemID, ItemName, ItemDescription, Price, Category) values (22, "Crispy Rice Rolls", "Crunchy Delight, Bite-sized Joy", 17.00, "Entree");
 INSERT INTO MENU(ItemID, ItemName, ItemDescription, Price, Category) values (23, "Aglio e Olio Pasta", "Garlic-infused Elegance, Pasta Perfection", 20.00, "Entree");
@@ -26,12 +26,13 @@ INSERT INTO WORKER(WorkerSSN, Worker_FirstName, Worker_LastName, Worker_Email, W
 INSERT INTO WORKER(WorkerSSN, Worker_FirstName, Worker_LastName, Worker_Email, Worker_Phone, SupervisorSSN, Wage, Hire_date, Worker_Street, Worker_City, Worker_State, Worker_Zip) values ("164924476", "Aurora", "Hayes", "ahayes@gmail.com", "2345678901", "926583759", 18.00, "2022-10-30", "567 Elmwood Avenue", "Rochester", "NY", "14620");
 INSERT INTO WORKER(WorkerSSN, Worker_FirstName, Worker_LastName, Worker_Email, Worker_Phone, SupervisorSSN, Wage, Hire_date, Worker_Street, Worker_City, Worker_State, Worker_Zip) values ("561954832", "Daniel", "Greene", "dgreene@gmail.com", "3456789012", "926583759", 15.00, "2024-01-12", "789 Maple Street", "Rochester", "NY", "14611");
 
-INSERT INTO CUSTOMER(CustomerID, Customer_FirstName, Customer_LastName, Customer_Email, Customer_Phone, DOB, Customer_Street, Customer_City, Customer_State, Customer_Zip) values ("sarcher123", "Serena", "Archer", "sarcher@gmail.com", "4567890123", 25.00, "2000-02-24", "321 Oakwood Avenue", "Rochester", "NY", "14613");
+INSERT INTO CUSTOMER(CustomerID, Customer_FirstName, Customer_LastName, Customer_Email, Customer_Phone, DOB, Customer_Street, Customer_City, Customer_State, Customer_Zip) 
+values ("sarcher123", "Serena", "Archer", "sarcher@gmail.com", "4567890123", "2000-02-24", "321 Oakwood Avenue", "Rochester", "NY", "14613");
 
-INSERT INTO TRANSACTION(TransactionID, Timestamp, TotalAmt, CustomerID, WorkerSSN) values (2340109, "2024-04-01 13:34:05", 85.00, "sarcher123", "164924476");
+INSERT INTO TRANSACTION(TransactionID, Timestamp, TotalAmt, CustomerID) values (2340109, "2024-04-01 13:34:05", 85.00, "sarcher123");
 
-INSERT INTO ORDER_ITEMS(TransactionID, ItemID, Quantity, Subtotal) values (2340109, 2, 2, 12.00);
-INSERT INTO ORDER_ITEMS(TransactionID, ItemID, Quantity, Subtotal) values (2340109, 10, 1, 9.00);
-INSERT INTO ORDER_ITEMS(TransactionID, ItemID, Quantity, Subtotal) values (2340109, 23, 1, 20.00);
-INSERT INTO ORDER_ITEMS(TransactionID, ItemID, Quantity, Subtotal) values (2340109, 21, 1, 18.00);
-INSERT INTO ORDER_ITEMS(TransactionID, ItemID, Quantity, Subtotal) values (2340109, 31, 2, 26.00);
+INSERT INTO ORDER_ITEM(TransactionID, ItemID, Quantity, Subtotal) values (2340109, 2, 2, 12.00);
+INSERT INTO ORDER_ITEM(TransactionID, ItemID, Quantity, Subtotal) values (2340109, 10, 1, 9.00);
+INSERT INTO ORDER_ITEM(TransactionID, ItemID, Quantity, Subtotal) values (2340109, 23, 1, 20.00);
+INSERT INTO ORDER_ITEM(TransactionID, ItemID, Quantity, Subtotal) values (2340109, 21, 1, 18.00);
+INSERT INTO ORDER_ITEM(TransactionID, ItemID, Quantity, Subtotal) values (2340109, 31, 2, 26.00);

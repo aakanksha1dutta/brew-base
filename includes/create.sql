@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS TRANSACTION(
     Timestamp DATETIME NOT NULL,
     TotalAmt decimal(5,2) NOT NULL,
     CustomerID VARCHAR(20) NOT NULL,
-    FOREIGN KEY(CustomerID) REFERENCES CUSTOMER(CustomerID) ON UPDATE CASCADE,
+    FOREIGN KEY(CustomerID) REFERENCES CUSTOMER(CustomerID) ON UPDATE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS MenuCategories(
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS MenuCategories(
 
 CREATE TABLE IF NOT EXISTS MENU(
     ItemID INT AUTO_INCREMENT PRIMARY KEY,
-    ItemName varchar(20) NOT NULL UNIQUE,
+    ItemName varchar(100) NOT NULL UNIQUE,
     ItemDescription varchar(235) DEFAULT "No Description",
     Price decimal(4,2) NOT NULL,
     Category varchar(20) NOT NULL,
@@ -65,6 +65,7 @@ CREATE TABLE IF NOT EXISTS Order_Item(
     FOREIGN KEY(TransactionID) REFERENCES Transaction(TransactionID) ON DELETE CASCADE,
     FOREIGN KEY(ItemID) REFERENCES Menu(ItemID)
 );
+
 
 
 
