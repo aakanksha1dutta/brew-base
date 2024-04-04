@@ -28,6 +28,4 @@ foreach($query as $row) {
     echo '</tr>';
 }
 echo '</table>';
-
-mysqli_close($mysqli);
 ?>
