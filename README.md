@@ -69,7 +69,6 @@ A cafe database for workers, managers and customers alike.
 | Timestamp     | datetime     | NO   |     | NULL    |       |
 | TotalAmt      | decimal(5,2) | NO   |     | NULL    |       |
 | CustomerID    | varchar(20)  | NO   | MUL | NULL    |       |
-| WorkerSSN     | char(9)      | NO   | MUL | NULL    |       |
 
 
 
