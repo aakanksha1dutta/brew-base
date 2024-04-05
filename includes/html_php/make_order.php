@@ -13,6 +13,7 @@ include_once 'connect_table_worker.php';
   </head>
 </html>
 
+
 <?php
 // Check if form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -117,7 +118,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-echo "Order placed successfully!";
+echo " <h3> Order placed successfully!</h3> <br><br>";
     $query = "SELECT o.itemID, m.itemName, m.price, o.quantity, o.subtotal from order_item o join menu m on o.itemid=m.itemid where o.transactionID ='$transaction_id'";
     $result = mysqli_query($conn, $query);
 
