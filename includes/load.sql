@@ -29,7 +29,7 @@ INSERT INTO WORKER(WorkerSSN, Worker_FirstName, Worker_LastName, Worker_Email, W
 INSERT INTO CUSTOMER(CustomerID, Customer_FirstName, Customer_LastName, Customer_Email, Customer_Phone, DOB, Customer_Street, Customer_City, Customer_State, Customer_Zip) 
 values ("sarcher123", "Serena", "Archer", "sarcher@gmail.com", "4567890123", "2000-02-24", "321 Oakwood Avenue", "Rochester", "NY", "14613");
 
-INSERT INTO TRANSACTION(TransactionID, Timestamp, TotalAmt, CustomerID) values (2340109, "2024-04-01 13:34:05", 85.00, "sarcher123");
+INSERT INTO TRANSACTION(TransactionID, Timestamp, CustomerID) values (2340109, "2024-04-01 13:34:05", "sarcher123");
 
 INSERT INTO ORDER_ITEM(TransactionID, ItemID, Quantity, Subtotal) values (2340109, 2, 2, 12.00);
 INSERT INTO ORDER_ITEM(TransactionID, ItemID, Quantity, Subtotal) values (2340109, 10, 1, 9.00);

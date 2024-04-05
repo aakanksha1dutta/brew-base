@@ -2,11 +2,20 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 'on');
 include_once 'connect_table_worker.php';
+?>
 
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Your order</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+  </head>
+</html>
 
-
+<?php
 // Check if form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if existing customer
     if (!empty($_POST["existing_custid"])) {
         $customer_id = $_POST["existing_custid"];
@@ -28,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $result = mysqli_query($conn, $sql_insert_customer);
         if ($result == false) {
             echo "Error: " . $sql_insert_customer . "<br>" . mysqli_connect_error();
-            mysqli_close($mysqli);
+            mysqli_close($conn);
             exit;
         }
         $customer_id = $new_cust_id;
@@ -71,13 +80,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         "Mint Choco Ice Cream" => "mintchoco"
     );
 
+    // Insert transaction record
+    $sql_insert_transaction = "INSERT INTO TRANSACTION (TransactionID, Timestamp, CustomerID) VALUES ('$transaction_id', '$timestamp', '$customer_id')";
+    $result = mysqli_query($conn, $sql_insert_transaction);
+    if ($result == false) {
+        echo "Error: " . $sql_insert_transaction . "<br>" . mysqli_connect_errno() ;
+        mysqli_close($conn);
+        exit;
+    }
+
     foreach ($menu_items as $item_name => $input_name) {
         $quantity = intval($_POST[$input_name]);
         if ($quantity > 0) {
             // Get ItemID and Price for the item
             $sql_get_menu_item_info = "SELECT ItemID, Price FROM MENU WHERE ItemName = '$item_name'";
-            $result0 = mysqli_query($conn, $sql_get_menu_item_info);
-            if (mysqli_num_rows($result0) > 0) {
+            $result = mysqli_query($conn, $sql_get_menu_item_info);
+            if (mysqli_num_rows($result) > 0) {
                 $row = mysqli_fetch_assoc($result);
                 $menu_item_id = $row["ItemID"];
                 $price = $row["Price"];
@@ -87,31 +105,62 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 // Insert order item record
                 $sql_insert_order_item = "INSERT INTO Order_Item (TransactionID, ItemID, Quantity, Subtotal) VALUES ('$transaction_id', '$menu_item_id', '$quantity', '$order_item_sub_total')";
-                $result2 = mysqli_query($conn, $sql_insert_order_item);
-                if ($result2==false) {
+                $result = mysqli_query($conn, $sql_insert_order_item);
+                if ($result==false) {
                     echo "Error: " . $sql_insert_order_item . "<br>" . mysqli_connect_error();
-                    mysqli_close($mysqli);
+                    mysqli_close($conn);
                     exit;
                 }
-
-                // Calculate total subtotal for all order items
-                $total_amount += $order_item_sub_total;
             }
         }
     }
 
-// Insert transaction record
-$sql_insert_transaction = "INSERT INTO TRANSACTION (TransactionID, Timestamp, TotalAmt, CustomerID) VALUES ('$transaction_id', '$timestamp', '$total_amount', '$customer_id')";
-$result3 = mysqli_query($conn, $sql_insert_transaction);
-if ($result3 == false) {
-    echo "Error: " . $sql_insert_transaction . "<br>" . mysqli_connect_errno() ;
-    mysqli_close($mysqli);
-    exit;
-}
+
 
 echo "Order placed successfully!";
+    $query = "SELECT o.itemID, m.itemName, m.price, o.quantity, o.subtotal from order_item o join menu m on o.itemid=m.itemid where o.transactionID ='$transaction_id'";
+    $result = mysqli_query($conn, $query);
+
+    if (mysqli_num_rows($result) > 0){
+    $query = array();
+    while($query[] = mysqli_fetch_assoc($result));
+    array_pop($query);
+
+    // Output a dynamic table of the results with column headings.
+    echo "<h2> Your orders: </h2>";
+    echo '<table border="1">';
+    echo '<tr>';
+    foreach($query[0] as $key => $value) {
+        echo '<td>';
+        echo $key;
+        echo '</td>';
+    }
+    echo '</tr>';
+    foreach($query as $row) {
+        echo '<tr>';
+        foreach($row as $column) {
+            echo '<td>';
+            echo $column;
+            echo '</td>';
+        }
+        echo '</tr>';
+    }
+    echo '</table>';
+
+    $query= mysqli_query($conn, "SELECT SUM(SUBTOTAL) AS SUM FROM ORDER_ITEM where transactionID ='$transaction_id'");
+    if (mysqli_num_rows($query) > 0){
+        $row = mysqli_fetch_assoc($query);
+        $total = $row['SUM'];
+        echo "<br><br>";
+        echo "<h3> Your total: $total </h3>";
+    }
+    
+}else{
+    echo "Something went wrong....";
+}
+
 }
 
 // Close connection
-mysqli_close($mysqli);
+mysqli_close($conn);
 ?>
