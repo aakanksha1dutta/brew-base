@@ -35,6 +35,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo '</tr>';
     }
     echo '</table>';
+
+    $query= mysqli_query($conn, "SELECT SUM(SUBTOTAL) AS SUM FROM ORDER_ITEM where transactionID ='$transid'");
+    if (mysqli_num_rows($query) > 0){
+        $row = mysqli_fetch_assoc($query);
+        $total = $row['SUM'];
+        echo "<br><br>";
+        echo "<h3> Your total: $total </h3>";
+    }
+    
 }else{
     echo "No such TransactionID";
 }
