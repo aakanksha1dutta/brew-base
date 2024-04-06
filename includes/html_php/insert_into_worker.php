@@ -61,4 +61,4 @@
     }*/
     }
 
-    header("Location: ../includes/regis_success.php?signup=success");
+    header("Location: ../regis_success.php?signup=success");

@@ -18,10 +18,10 @@
 <body>
     <div class="container">
         
-        <div><p>New Worker Registration is successful!</p></div>
-        <div><p>Make new registration? <a href="registration.php">Login Here</a></p></div>
-        <div><p>Want to log in ? <a href="worker_login.php">Login Here</a></p></div>
+        <div><p>Your order has been submitted!</p></div>
+        <div><p>Order again? <a href="../make_order.php">Order here</a></p></div>
       </div>
     </div>
+    
 </body>
 </html>
