@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "TransactionID | Timestamp | CustomerID | "."</br>";
             echo $row['TransactionID']." | ". $row['Timestamp']." | ".$row['CustomerID']." | ";
             // Add an "edit" button for each worker
-            echo "<a href='delete_transaction.php?ssn=" . $row['TransactionID'] . "' class='btn btn-primary'>Delete Transaction</a>";
+            echo "<a href='delete_transaction.php?TransactionID=" . $row['TransactionID'] . "' class='btn btn-primary'>Delete Transaction</a>";
             echo "<br><br>";
         }
     }
