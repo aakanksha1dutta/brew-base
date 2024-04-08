@@ -5,12 +5,12 @@ ini_set('display_errors', 'on');
 include_once 'connect_table_worker.php';
 
 // Check if TransactionID is provided
-if(isset($_GET['ssn']) && !empty($_GET['ssn'])) {
+if(isset($_GET['TransactionID']) && !empty($_GET['TransactionID'])) {
     // Sanitize input to prevent SQL injection
-    $transactionID = $_GET['ssn'];
+    $transactionID = $_GET['TransactionID'];
 
     // Prepare SQL statement
-    $sql = "DELETE FROM TRANSACTION WHERE TransactionID = ?";
+    $sql = "DELETE FROM TRANSACTION WHERE TransactionID =  ?;";
     
     // Prepare the SQL statement
     $stmt = $conn->prepare($sql);
@@ -19,7 +19,7 @@ if(isset($_GET['ssn']) && !empty($_GET['ssn'])) {
     // Execute the statement
     if ($stmt->execute()) {
         // Redirect back to the previous page after deleting the transaction
-        header("Location: {$_SERVER['HTTP_REFERER']}");
+        header("Location: del_transact_success.php?delete=success");
         exit();
     } else {
         echo "Error deleting record: " . $conn->error;
@@ -31,7 +31,3 @@ if(isset($_GET['ssn']) && !empty($_GET['ssn'])) {
     // If TransactionID is not provided or empty
     echo "TransactionID is missing or empty.";
 }
-
-// Close the database connection
-$conn->close();
-?>
